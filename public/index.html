@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic meta tags for responsiveness and encoding -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terabox Link Generator</title>
+    <!-- Link to our custom stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Theme toggle button (top right corner) -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <!-- Sun icon visible in light mode -->
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/>
+        </svg>
+        <!-- Moon icon visible in dark mode -->
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+            <path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+        </svg>
+    </button>
+
+    <!-- Main content container -->
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Terabox Direct Link Generator</h1>
+            <p>Convert your Terabox shared links to direct download links</p>
+        </header>
+
+        <main>
+            <!-- Form section where users input URLs -->
+            <div class="form-container">
+                <form id="linkForm">
+                    <div class="input-group">
+                        <input type="url" id="urlInput" class="url-input" 
+                               placeholder="Paste Terabox link here" required>
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <span class="btn-text">Generate Link</span>
+                            <div class="loading-spinner" id="spinner"></div>
+                        </button>
+                    </div>
+                </form>
+                <!-- Status messages will appear here -->
+                <div class="status-message" id="statusMessage"></div>
+            </div>
+
+            <!-- Result section (hidden initially) -->
+            <div class="result-container" id="resultContainer">
+                <div class="result-header">
+                    <h2>Your Generated Link:</h2>
+                    <button class="copy-btn" id="copyButton">Copy</button>
+                </div>
+                <input type="text" id="linkDisplay" class="generated-link" readonly>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer at bottom of page -->
+    <footer class="footer">
+        <p>Made in Ceylon with <span class="heart">❤️</span> by sh13y</p>
+    </footer>
+
+    <!-- Link to our JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>

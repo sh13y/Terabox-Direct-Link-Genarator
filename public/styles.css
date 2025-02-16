@@ -1,0 +1,308 @@
+:root {
+  /* Color palette */
+  --charcoal: #264653;
+  --persian-green: #2a9d8f;
+  --saffron: #e9c46a;
+  --sandy-brown: #f4a261;
+  --burnt-sienna: #e76f51;
+
+  /* Light theme */
+  --primary: var(--persian-green);
+  --secondary: var(--charcoal);
+  --background: color-mix(in srgb, var(--saffron) 10%, white);
+  --text: var(--charcoal);
+  --success: var(--persian-green);
+  --error: var(--burnt-sienna);
+  --surface: white;
+}
+
+[data-theme="dark"] {
+  /* Dark theme */
+  --background: var(--charcoal);
+  --text: color-mix(in srgb, var(--saffron) 90%, white);
+  --surface: color-mix(in srgb, var(--charcoal) 90%, black);
+  --primary: var(--sandy-brown);
+  --secondary: var(--saffron);
+}
+
+/* Add theme toggle */
+.theme-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: var(--surface);
+  padding: 0.75rem;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1) rotate(15deg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+[data-theme="dark"] .theme-toggle {
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+}
+
+.sun-icon {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.moon-icon {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+}
+
+/* Dark mode specific styles */
+[data-theme="dark"] {
+  .form-container,
+  .result-container {
+    box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1);
+  }
+  
+  .generated-link {
+    border-color: color-mix(in srgb, var(--saffron) 20%, transparent);
+  }
+}
+
+/* Add transition to theme change */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  padding: 2rem;
+  background: var(--background);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.container {
+  flex: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, var(--saffron), var(--sandy-brown));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.form-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.input-group {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.url-input {
+  flex: 1;
+  padding: 1rem;
+  border: 2px solid var(--primary);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.url-input:focus {
+  outline: none;
+  border-color: var(--sandy-brown);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--sandy-brown) 30%, transparent);
+}
+
+.submit-btn {
+  position: relative;
+  padding: 1rem 2rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.submit-btn:hover {
+  background: var(--secondary);
+}
+
+.submit-btn:active {
+  background: var(--charcoal);
+  transform: scale(0.98);
+}
+
+.result-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.copy-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.copy-btn:hover {
+  background: var(--secondary);
+}
+
+.generated-link {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid color-mix(in srgb, var(--charcoal) 20%, transparent);
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, var(--saffron) 10%, transparent);
+  font-size: 1rem;
+}
+
+.status-message {
+  text-align: center;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.status-message.success {
+  background: color-mix(in srgb, var(--persian-green) 20%, transparent);
+  color: var(--persian-green);
+}
+
+.status-message.error {
+  background: color-mix(in srgb, var(--burnt-sienna) 20%, transparent);
+  color: var(--burnt-sienna);
+}
+
+.loading-spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--persian-green);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.loading-spinner.active {
+  opacity: 1;
+}
+
+.btn-text {
+  transition: opacity 0.2s;
+}
+
+.loading .btn-text {
+  opacity: 0;
+}
+
+@keyframes spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@media (max-width: 640px) {
+  .input-group {
+    flex-direction: column;
+  }
+  
+  .submit-btn {
+    width: 100%;
+  }
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  background: var(--surface);
+  color: var(--text);
+  opacity: 0.8;
+  font-size: 0.9rem;
+  animation: fadeIn 1s ease-in;
+}
+
+.heart {
+  color: var(--burnt-sienna);
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.heart:hover {
+  transform: scale(1.2);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 0.8; }
+}
+
+@media (max-width: 640px) {
+  .footer {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+}
+
+[data-theme="dark"] .footer {
+  opacity: 0.9;
+}
+
+[data-theme="dark"] .heart {
+  color: var(--saffron);
+}
