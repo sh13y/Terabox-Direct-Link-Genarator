@@ -16,6 +16,12 @@ Convert those pesky Terabox shared links into direct download URLs faster than y
 - **Copy Button** - Because CTRL+C is too mainstream
 - **Error Handling** - We tell you when things go wrong (which is never, right?)
 
+## Preview 📸
+
+![Terabox Link Generator Interface](./assets/screenshot.png)
+
+> "It's not much, but it's honest work" - The App Probably
+
 ## Installation 🛠️
 
 1. **Clone this repo** (or download it, we don't judge)
